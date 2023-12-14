@@ -155,8 +155,11 @@ function repeatString(str, times) {
  *   removeFirstOccurrences('I like legends', 'end') => 'I like legs'.
  *   removeFirstOccurrences('ABABAB', 'BA') => 'ABAB'.
  */
-function removeFirstOccurrences(/* str, value */) {
-  throw new Error('Not implemented');
+function removeFirstOccurrences(str, value) {
+  const strIndex = str.indexOf(value);
+  const newStr = str.slice(strIndex, strIndex + value.length);
+  const finalStr = str.replace(newStr, '');
+  return finalStr;
 }
 
 /**
@@ -171,8 +174,18 @@ function removeFirstOccurrences(/* str, value */) {
  *   removeLastOccurrences('I like legends', 'end') => 'I like legs'.
  *   removeLastOccurrences('ABABAB', 'BA') => 'ABAB'.
  */
-function removeLastOccurrences(/* str, value */) {
-  throw new Error('Not implemented');
+function removeLastOccurrences(str, value) {
+  const strIndex = str.lastIndexOf(value);
+  const newStr = str.slice(strIndex, strIndex + value.length);
+  const finalStr = str
+    .split(' ')
+    .reverse()
+    .join(' ')
+    .replace(newStr, '')
+    .split(' ')
+    .reverse()
+    .join(' ');
+  return finalStr;
 }
 
 /**
@@ -187,8 +200,19 @@ function removeLastOccurrences(/* str, value */) {
  *   sumOfCodes('') => 0
  *   sumOfCodes() => 0
  */
-function sumOfCodes(/* str */) {
-  throw new Error('Not implemented');
+function sumOfCodes(str) {
+  const testedStr = str;
+  let sum = 0;
+
+  if (!str) {
+    return sum;
+  }
+
+  for (let i = 0; i < testedStr.length; i += 1) {
+    const charIndex = testedStr.charCodeAt(i);
+    sum += charIndex;
+  }
+  return sum;
 }
 
 /**
