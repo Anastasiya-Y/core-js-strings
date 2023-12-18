@@ -258,8 +258,28 @@ function endsWith(str, substr) {
  *   formatTime(0, 45) => "00:45"
  *   formatTime(0, 0) => "00:00"
  */
-function formatTime(/* minutes, seconds */) {
-  throw new Error('Not implemented');
+function formatTime(minutes, seconds) {
+  let min = '';
+  const minutesTest = minutes.toString();
+
+  if (minutesTest.length > 1) {
+    min = minutesTest;
+  } else {
+    min = minutesTest;
+    min = min.padStart(2, '0');
+  }
+
+  let sec = '';
+  const secondsTest = seconds.toString();
+
+  if (secondsTest.toString().length > 1) {
+    sec = secondsTest;
+  } else {
+    sec = secondsTest;
+    sec = sec.padStart(2, '0');
+  }
+  const timeString = `${min}:${sec}`;
+  return timeString;
 }
 
 /**
@@ -415,8 +435,20 @@ function reverseWords(str) {
  *   invertCase('JavaScript is Fun') => 'jAVAsCRIPT IS fUN'
  *   invertCase('12345') => '12345'
  */
-function invertCase(/* str */) {
-  throw new Error('Not implemented');
+function invertCase(str) {
+  const arr = str.split('');
+
+  const newArr = arr.map((item) => {
+    const char = item.toLowerCase();
+    let currentItem = item;
+    if (currentItem !== char) {
+      currentItem = currentItem.toLowerCase();
+      return currentItem;
+    }
+    currentItem = currentItem.toUpperCase();
+    return currentItem;
+  });
+  return newArr.join('');
 }
 
 /**
@@ -446,8 +478,10 @@ function getStringFromTemplate(firstName, lastName) {
  *   extractNameFromTemplate('Hello, John Doe!') => 'John Doe'
  *   extractNameFromTemplate('Hello, Chuck Norris!') => 'Chuck Norris'
  */
-function extractNameFromTemplate(/* value */) {
-  throw new Error('Not implemented');
+function extractNameFromTemplate(value) {
+  let newStr = value.replace('Hello, ', '');
+  newStr = newStr.replace('!', '');
+  return newStr;
 }
 
 /**
@@ -461,8 +495,12 @@ function extractNameFromTemplate(/* value */) {
  *   unbracketTag('<span>') => 'span'
  *   unbracketTag('<a>') => 'a'
  */
-function unbracketTag(/* str */) {
-  throw new Error('Not implemented');
+function unbracketTag(str) {
+  const regExp1 = /</;
+  const regExp2 = />/;
+  let newStr = str.replace(regExp1, '');
+  newStr = newStr.replace(regExp2, '');
+  return newStr;
 }
 
 /**
@@ -480,8 +518,10 @@ function unbracketTag(/* str */) {
  *   ],
  *   'info@gmail.com' => ['info@gmail.com']
  */
-function extractEmails(/* str */) {
-  throw new Error('Not implemented');
+function extractEmails(str) {
+  const arr = str;
+  const newArr = arr.split(';');
+  return newArr;
 }
 
 /**
